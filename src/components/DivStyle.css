@@ -49,3 +49,11 @@ span
     font-size: 2rem;
     text-align: center;
 }
+.btn
+{
+  display: flex;
+  flex-direction: row;
+  justify-content:center ;
+  align-items: center;
+  flex-wrap: wrap;
+}
