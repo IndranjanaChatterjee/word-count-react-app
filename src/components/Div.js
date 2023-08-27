@@ -8,6 +8,7 @@ export default function Div(prop) {
     color: "#738290",
     backgroundColor: "#FFFCF7",
   });
+  const [w,nw]=useState(3);
   document.body.style.backgroundColor = `${instyle.backgroundColor}`;
   document.body.style.color = `${instyle.color}`;
   const convert1 = () => {
@@ -40,13 +41,24 @@ export default function Div(prop) {
   };
   const convert5 = () => {
     console.log("clicked");
-    
+    nw(0);
     newText('');
   };
   const change = (e) => {
-    console.log("clicked");
+    
     newText(e.target.value);
+    let i=0,sum=1;
+    for(i=0;i<text.length;i++)
+    {
+      if(text[i]==' ')
+      {
+         sum+=1;
+      }
+    }
+    console.log(sum);
+    nw(sum);
   };
+  
   const changeMode = () => {
     if (mode === "Dark mode") {
       newMode("Light mode");
@@ -99,7 +111,7 @@ export default function Div(prop) {
           </button>
         </div>
         <div className="count">
-          <span>No. of words:{text.split(" ").length}</span>
+          <span>No. of words:{w}</span>
           <span>No. of characters:{text.length}</span>
         </div>
       </div>
