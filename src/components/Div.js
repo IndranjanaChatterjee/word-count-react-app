@@ -4,10 +4,12 @@ import "./DivStyle.css";
 export default function Div(prop) {
   const [text, newText] = useState("Enter text here");
   const [mode, newMode] = useState("Dark mode");
-  const[instyle,newstyle]=useState({
-    color:"#FAC9B8",
-    backgroundColor:"#2F243A"
-  })
+  const [instyle, newstyle] = useState({
+    color: "#738290",
+    backgroundColor: "#FFFCF7",
+  });
+  document.body.style.backgroundColor = `${instyle.backgroundColor}`;
+  document.body.style.color = `${instyle.color}`;
   const convert1 = () => {
     console.log("clicked");
     let textcase = text.toUpperCase();
@@ -36,6 +38,11 @@ export default function Div(prop) {
     }
     newText(textcase);
   };
+  const convert5 = () => {
+    console.log("clicked");
+    
+    newText('');
+  };
   const change = (e) => {
     console.log("clicked");
     newText(e.target.value);
@@ -44,34 +51,27 @@ export default function Div(prop) {
     if (mode === "Dark mode") {
       newMode("Light mode");
       newstyle({
-        color:"#FAC9B8",
-        backgroundColor:"#2F243A",
-
+        color: "#FAC9B8",
+        backgroundColor: "#2F243A",
+        
       });
-      console.log(instyle.backgroundColor);
-      document.body.style.backgroundColor=`${instyle.backgroundColor}`;
-      document.body.style.color=`${instyle.color}`;
-
+      /* 9 */
+    } else if (mode === "Light mode") {
+      newMode("Dark mode");
+      newstyle({
+        
+        color: "#738290",
+        backgroundColor: "#FFFCF7",
+      });
     }
-    else if (mode === "Light mode") {
-        newMode("Dark mode");
-        newstyle({
-            color:"#738290",
-            backgroundColor:"#FFFCF7"
-    
-          });
-          console.log(instyle.backgroundColor);
-          document.body.style.backgroundColor=`${instyle.backgroundColor}`;
-          document.body.style.color=`${instyle.color}`;
-          
-      }
+    console.log(instyle.backgroundColor);
+    document.body.style.backgroundColor = `${instyle.backgroundColor}`;
+    document.body.style.color = `${instyle.color}`;
   };
-  
 
   return (
     <>
-      
-      <div className="container" >
+      <div className="container">
         <h1>Type here</h1>
         <div className="box">
           <textarea
@@ -93,6 +93,9 @@ export default function Div(prop) {
           </button>
           <button id="click" onClick={convert4}>
             Inverse Case
+          </button>
+          <button id="click" onClick={convert5}>
+            Clear
           </button>
         </div>
         <div className="count">
